@@ -1,0 +1,54 @@
+body {
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-size: 5vw;
+  font-weight: 100;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+a span {
+  font-weight: 100;
+  transition: all .5s;
+  border-bottom: 1px solid;
+}
+a span:nth-child(2) {
+  transition-delay: .1s;
+}
+a span:nth-child(3) {
+  transition-delay: .2s;
+}
+a span:nth-child(4) {
+  transition-delay: .3s;
+}
+a:hover span {
+  font-weight: 700;
+}
+a:hover span:nth-child(4) {
+  transition-delay: .3s;
+}
+a:hover span:nth-child(3) {
+  transition-delay: .2s;
+}
+a:hover span:nth-child(2) {
+  transition-delay: .1s;
+}
+a:hover span:nth-child(1) {
+  transition-delay: 0s;
+}
+a.hover-shadow:hover {
+  text-shadow: 1px 1px 0px #ddd, 2px 2px 0px #ddd, 3px 3px 0px #ddd;
+}
+a.hover-color:hover {
+  border-color: darkmagenta;
+}
