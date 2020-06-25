@@ -58,6 +58,7 @@ function my_login_logo_background() {
    endif;
 }
 add_action( 'login_form', 'my_login_logo_background', 100 );
+add_action( 'lostpassword_form', 'my_login_logo_background', 100 );
 // ****** END add background_image*** 
 
 // ******Input panel add url and image***
@@ -109,6 +110,7 @@ function my_login_logo_url_title() {
     return get_bloginfo();
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
 
 // ***** END login url and image ****
 

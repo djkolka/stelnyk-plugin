@@ -9,12 +9,12 @@ Plugin URI: http://stelnyk.com/plugins/stelnyk-plugin
 */
 
 
-// require 'plugin-update-checker-3.1/plugin-update-checker.php';
-// $MyUpdateChecker = PucFactory::buildUpdateChecker(
-//     'http://stelnyk.com/plugins/stelnyk-plugin/metadata.json',
-//     __FILE__,
-//     'stelnyk-plugin'
-// );
+require 'plugin-update-checker-3.1/plugin-update-checker.php';
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
+    'http://stelnyk.com/plugins/stelnyk-plugin/metadata.json',
+    __FILE__,
+    'stelnyk-plugin'
+);
 
 //Enqueue Admin CSS on Job Board Settings page only
 if ( isset( $_GET['page'] ) && $_GET['page'] == 'stelnyk_setting' ) {
@@ -294,24 +294,29 @@ function sanitize_callback( $options ){
   if ($variable_value['add_bootstrap'] == '1')
   include_once 'add_bootstrap.php';
 
-  
+
   if ($variable_value['add_google_anal'] == '1')
   include_once 'add_google_analytics.php';
-  
+
   if ($variable_value['add_color_browser'] == '1')
   include_once 'add_color_browser.php';
   
   if ($variable_value['add_contact_button'] == '1')
   include_once 'add_contact_button.php';
-
+  
   include_once 'pagetemplater.php';
   
-  include_once 'add_other_functions.php';
+  include_once 'add_custom_css.php'; 
+
+  include_once 'add_extensions_site_origin.php';
+  
   
   include_once 'required_plugins/example.php';
   
-  include_once 'add_settings_for_custom_home_page.php';
+  include_once 'add_disable_admin_bar_subscriber.php';
   
+  include_once 'add_reset_password_message.php';
   
-  
-  
+  include_once 'add_send_test_email.php';
+
+  include_once 'add_other_functions.php';

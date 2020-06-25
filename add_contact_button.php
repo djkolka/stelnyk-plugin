@@ -1,5 +1,10 @@
 <?php  
 
+function add_my_css() {
+  wp_enqueue_style ( 'my_css', plugins_url() .'/stelnyk-plugin/mystyle/css/my.css' );
+}
+add_action( 'wp_enqueue_scripts', 'add_my_css');
+
 add_action('admin_init', 'add_contact_button');
 
 function add_contact_button(){

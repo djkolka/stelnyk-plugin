@@ -41,6 +41,7 @@ function register_icon_menu() {
 }
 add_action( 'init', 'register_icon_menu' );
 // *****END add menu to home_page.php *****
+
 //[phone_number_for_help]
 function foobar_func( $atts ){
 	return "777-777-7777";

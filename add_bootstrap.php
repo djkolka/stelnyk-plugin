@@ -35,11 +35,12 @@ if ($val == 4) {
 
 // *** add bootstrap-4.3.1 ***
 function register_style_and_scripts_bootstrap_431() {
-  
+    // false - header, true - footer
     wp_enqueue_style( 'bootstrap_431_css', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css' );
-    wp_enqueue_script( 'bootstrap_431_jquery_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/jquery-3.3.1.slim.min.js', null, null, true );
-    wp_enqueue_script( 'bootstrap_431_popper_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/popper.min.js', null, null, true );
-    wp_enqueue_script( 'bootstrap_431_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/bootstrap.min.js', null, null, true );
+    wp_enqueue_script( 'bootstrap_431_jquery_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/jquery-3.3.1.slim.min.js', null, null, false );
+    wp_enqueue_script( 'bootstrap_431_popper_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/popper.min.js', null, null, false );
+    wp_enqueue_script( 'bootstrap_431_js', plugin_dir_url( __FILE__ ) . 'bootstrap/bootstrap-4.3.1-dist/js/bootstrap.min.js', null, null, false );
+    wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
   
 }
 add_action( 'wp_enqueue_scripts', 'register_style_and_scripts_bootstrap_431' );

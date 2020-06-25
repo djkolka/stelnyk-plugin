@@ -46,10 +46,6 @@
 
 
 
-
-
-
-
 // stelnyk signature
 function my_signature_script() {
   // wp_enqueue_style ( 'custom-login1', get_stylesheet_directory_uri() . '/login/hover/css/normalize.css' );
@@ -81,107 +77,9 @@ function my_addition_to_login_footer() {
 // end of login page code
 
 
-function remove_default_stylesheet() {
-    if ( is_page_template( 'resume.php' ) ) {
-  wp_deregister_style( 'twentysixteen-style' );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'remove_default_stylesheet', 100 );
-
-
-function add_my_css() {
-  wp_enqueue_style ( 'my_css', plugins_url() .'/stelnyk-plugin/mystyle/css/my.css' );
-}
-add_action( 'wp_enqueue_scripts', 'add_my_css');
-
-
-function register_style_and_scripts_for_page() {
-  if ( is_page_template( 'resume.php' ) ) {
-    wp_enqueue_style('font-google', 'https://fonts.googleapis.com/css?family=Montserrat:400,700,200');
-    wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
-    wp_enqueue_style( 'my_css1', get_stylesheet_directory_uri() . '/resume-style/css/my.css' );
-    wp_enqueue_style( 'my_css2', get_stylesheet_directory_uri() . '/resume-style/css/aos.css' );
-    wp_enqueue_style( 'my_css3', get_stylesheet_directory_uri() . '/resume-style/css/bootstrap.min.css' );
-    wp_enqueue_style( 'my_css4', get_stylesheet_directory_uri() . '/resume-style/styles/main.css' );
-  
-
-    wp_enqueue_script( 'my_javascript1', get_stylesheet_directory_uri() . '/resume-style/js/my.js', null, null, false );
-    wp_enqueue_script( 'my_javascript2', get_stylesheet_directory_uri() . '/resume-style/js/core/jquery.3.2.1.min.js', null, null, true );
-    wp_enqueue_script( 'my_javascript3', get_stylesheet_directory_uri() . '/resume-style/js/core/popper.min.js', null, null, true );
-    wp_enqueue_script( 'my_javascript4', get_stylesheet_directory_uri() . '/resume-style/js/core/bootstrap.min.js', null, null, true );
-    wp_enqueue_script( 'my_javascript5', get_stylesheet_directory_uri() . '/resume-style/js/now-ui-kit.js?v=1.1.0', null, null, true );
-    wp_enqueue_script( 'my_javascript6', get_stylesheet_directory_uri() . '/resume-style/js/aos.js', null, null, true ); 
-    wp_enqueue_script( 'my_javascript7', get_stylesheet_directory_uri() . '/resume-style/scripts/main.js', null, null, true );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'register_style_and_scripts_for_page' );
 
 
 
-// Adding a custom option under the Row Styles
-function custom_row_style_fields($fields) {
-
-  $fields['data-aos'] = array(
-    'name'        => __('data-aos', 'siteorigin-panels'),
-    'type'        => 'select',
-    'group'       => 'attributes',
-    'options'  => array(
-        ''               => __( 'Standard', 'siteorigin-panels' ),
-        'fade-up'           => __( 'fade-up', 'siteorigin-panels' ),
-        'fade-right' => __( 'fade-right', 'siteorigin-panels' ),
-        'fade-left' => __( 'fade-left', 'siteorigin-panels' ),
-      ),
-    'description' => __(' effect for scroll', 'siteorigin-panels'),
-    'priority'    => 8,
-  );
-
-  return $fields;
-}
-
-add_filter( 'siteorigin_panels_row_style_fields', 'custom_row_style_fields' );
-
-// Adding the new option to the row element
-function custom_row_style_attributes( $attributes, $args ) {
-    if( !empty( $args['data-aos'] ) ) {
-        $attributes['data-aos'] = $args['data-aos'];
-    }
-
-    return $attributes;
-}
-
-add_filter('siteorigin_panels_row_style_attributes', 'custom_row_style_attributes', 10, 2);
-
-// Adding a custom option under the Row Styles
-function custom_row_style_fields1($fields) {
-
-  $fields['data-aos-offset'] = array(
-    'name'        => __('data-aos-offset', 'siteorigin-panels'),
-    'type'        => 'select',
-    'group'       => 'attributes',
-    'options'  => array(
-        '50'           => __( '50', 'siteorigin-panels' ),
-        '100' => __( '100', 'siteorigin-panels' ),
-        '200' => __( '200', 'siteorigin-panels' ),
-      ),
-    'description' => __(' effect for scroll', 'siteorigin-panels'),
-    'priority'    => 9,
-  );
-
-  return $fields;
-}
-
-add_filter( 'siteorigin_panels_row_style_fields', 'custom_row_style_fields1' );
-
-// Adding the new option to the row element
-function custom_row_style_attributes1( $attributes, $args ) {
-    if( !empty( $args['data-aos-offset'] ) ) {
-        $attributes['data-aos-offset'] = $args['data-aos-offset'];
-    }
-
-    return $attributes;
-}
-
-add_filter('siteorigin_panels_row_style_attributes', 'custom_row_style_attributes1', 10, 2);
 
 
 
@@ -278,27 +176,6 @@ echo "You have selected :" .$selected_val;  // Displaying Selected Value
 add_action('save_post', 'save_image_data');
 
 
-function amenu_resume_init() {
-
-  register_sidebar( array(
-    'name'          => 'resume area',
-    'id'            => 'resume_1',
-    'before_widget' => ' <div id="all_resume_menu" >
-                           
-                          <button class="hamburger hamburger--spin" type="button">
-                          <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                          </span>
-                        </button><div id="resume_menu" class="resume_menu" >',
-    'after_widget'  => '</div></div>',
-    'before_title'  => '<h2 class="">',
-    'after_title'   => '</h2>',
-  ) );
-
-}
-add_action( 'widgets_init', 'amenu_resume_init' );
-
-
 /*** Hide email from Spam Bots using a shortcode. */
 function wpcodex_hide_email_shortcode( $atts , $content = null ) {
   if ( ! is_email( $content ) ) {
@@ -312,4 +189,3 @@ function wpcodex_hide_email_shortcode( $atts , $content = null ) {
   return sprintf( '<a href="%s">%s</a>', esc_url( $email_link, array( 'mailto' ) ), esc_html( $content ) );
 }
 add_shortcode( 'email', 'wpcodex_hide_email_shortcode' );
-

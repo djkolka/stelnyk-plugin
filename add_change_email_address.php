@@ -15,14 +15,15 @@ function email_settings(){
 ## Заполняем опцию 5
 function fill_primer_field5(){
   $val = get_option('option_name');
+  $url = get_option( 'siteurl' );
   ?>
-  <input type='text' name='option_name[email_prefix]' value='<?php echo $val['email_prefix']; ?>'>
+  <input type='text' name='option_name[email_prefix]' value='<?php echo $val['email_prefix']; ?>'> enter only prefix (everething before @)
   <?php
 }
 
 function email_callback() {
          echo ('<div class="description">You can change default email "wordpress@yourdomain.com" to any other prefix like "info@yourdomain.com" <br> 
-          the following email settings are now  <p>'.wp_sender_email($original_email_address).'</p> .</div>');
+          the following email settings are now  <strong>'.wp_sender_email($original_email_address).'</strong>  .</div>');
           }
 
 // Function to change email address
@@ -36,18 +37,19 @@ function email_callback() {
           } 
           $url = get_option( 'siteurl' );
           $url = parse_url($url);
-          $url = $prefix."@".$url['host'];
+          $url = $url['host'];
+          $url = $prefix.'@'.$url;
           return  $url ;
       }
        
       // Function to change sender name
       function wp_sender_name( $original_email_from ) {
           $name = get_option( 'blogname' );
-          return $name;
+          return htmlspecialchars_decode($name);
       }
        
       // Hooking up our functions to WordPress filters 
       add_filter( 'wp_mail_from', 'wp_sender_email' );
       add_filter( 'wp_mail_from_name', 'wp_sender_name' );
 
-      ?>
+?>
