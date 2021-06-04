@@ -19,7 +19,7 @@ function add_color_tab_input(){
   $val = get_option('option_name');
 
  ?>
-  <input data-jscolor="" class='color-field' name='option_name[tab_color]' value='<?php echo $val['tab_color']; ?>'>
+  <input type="color" class='color-field' name='option_name[tab_color]' value='<?php echo $val['tab_color']; ?>'>
   
   <img class='img_in_tools' src='<?php echo plugin_dir_url( __FILE__ ); ?>/img/theme-color-ss.png'> 
 

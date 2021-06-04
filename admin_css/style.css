@@ -118,3 +118,10 @@ License URI: LICENSE
 	padding: 5px;
 	background-color: rgb(230, 230, 230);
 }
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 64px;
+	height: 64px;
+}
